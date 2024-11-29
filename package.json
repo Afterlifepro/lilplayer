@@ -1,0 +1,23 @@
+{
+  "name": "lilplayer",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "spicetify-creator",
+    "build:local": "spicetify-creator --out=dist --minify",
+    "watch:local": "spicetify-creator --watch",
+    "watch:spice": "spicetify watch -le",
+    "watch": "conc -c blue,green pnpm:watch:*"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "concurrently": "^9.1.0",
+    "spicetify-creator": "^1.0.17"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
