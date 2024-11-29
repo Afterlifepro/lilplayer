@@ -1,5 +1,7 @@
 import React from "react";
 import { type Root } from "react-dom/client";
+import LilPlayer from "./lilplayer";
+
 declare global {
   interface Window {
     documentPictureInPicture: {
@@ -8,6 +10,7 @@ declare global {
     };
   }
 }
+
 function copyStyles(from: Window, to: Window) {
   [...from.document.styleSheets].forEach((styleSheet) => {
     try {
@@ -30,6 +33,7 @@ function copyStyles(from: Window, to: Window) {
     }
   });
 }
+
 export function createLilInstance(config: Record<string, any> = {}) {
   let isOpen: boolean = false;
   let pipWindow: Window | null = null;
@@ -46,10 +50,18 @@ export function createLilInstance(config: Record<string, any> = {}) {
       // remove min width/height to hide scrollbars
       pipWindow.document.body.style.minWidth = "0";
       pipWindow.document.body.style.minHeight = "0";
+
+      // add miniplayer
+      root = Spicetify.ReactDOM.createRoot(pipWindow.document.body);
+      root?.render(<LilPlayer />);
     } else {
+      root?.unmount();
       pipWindow?.close();
       isOpen = false;
       alert("Lilplayer is closed");
+    }
+  };
+
   return {
     open,
   };
