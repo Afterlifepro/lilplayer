@@ -1,14 +1,20 @@
-/* prevent my styles from fuckin shit up */
-#pipWindow {
+/**************
+* BASE STYLES *
+**************/
+body:has(#pipWindow) {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+}
 
-  background-color: var(--spice-main);
+#pipWindow {
+  height: 100%;
+  width: 100%;
+
+  background-color: var(--accent, var(--spice-main));
 
   display: grid;
-  grid-template-rows: 25px calc(100vh - 75px) 5px 45px;
-
+  grid-template-rows: 25px 5px calc(100vh - 75px) 45px;
 
   & .icon-wrapper {
     aspect-ratio: 1 / 1;
@@ -23,19 +29,18 @@
     & .icon {
       width: 16px;
       height: 16px;
-      fill: var(--spice-text);
+      fill: white;
     }
-  
+
     &.circle {
       border-radius: 50%;
-      background-color: var(--spice-text);
-  
+      background-color: white;
+
       & .icon {
-        fill: var(--spice-main);
+        fill: var(--accent);
       }
     }
   }
-
 
   & #grabBar {
     -webkit-app-region: drag;
@@ -63,7 +68,6 @@
     width: 100%;
     height: 100%;
     padding: 10px;
-    background-color: var(--accent, red);
 
     & img {
       width: 100%;
@@ -78,11 +82,11 @@
     & #playback-progress-wrapper {
       width: 100%;
       height: 5px;
-      background-color: var(--spice-button-disabled);
+      background-color: black;
 
       & #playback-progress {
         height: 5px;
-        background-color: var(--spice-text);
+        background-color: var(--accent);
       }
     }
   }
@@ -97,3 +101,41 @@
     gap: 8px;
   }
 }
+
+/***********
+* GRAB BAR *
+*    &     *
+*  LAYOUT  *
+***********/
+/* @media (max-height: 180px) {
+  #pipWindow {
+    grid-template-columns: 25px 80px 1fr;
+    grid-template-rows: 5px 1fr;
+
+    & #grabBar {
+      height: 100%;
+      width: 25px;
+
+      grid-template-rows: 30px 1fr 30px;
+      grid-template-columns: 1fr;
+      grid-row: span 2;
+
+      & :nth-child(1) {
+        order: 2;
+      }
+      & :nth-child(2) {
+        order: 1;
+        writing-mode: vertical-rl;
+        letter-spacing: -10px;
+        text-orientation: upright;
+      }
+      & :nth-child(3) {
+        order: 0;
+      }
+    }
+
+    & #lilplayer-playback {
+      grid-column: span 2;
+    }
+  }
+} */

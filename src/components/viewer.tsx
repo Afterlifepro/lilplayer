@@ -2,17 +2,24 @@ import React from "react";
 import { get_average_rgb } from "../utils/getAverageRBG";
 import { getUrl } from "../utils/getUrl";
 
-export default function Viewer({ song }: { song: Spicetify.PlayerState }) {
-  // quit if no song or cover art
-  if (!song || !song.item.album.images) return <>404</>;
-  
+export default function Viewer({
+  song,
+  setAccent,
+}: {
+  song: Spicetify.PlayerState;
+  setAccent: (accent: Uint8ClampedArray|"err") => void;
+}) {
+  // quit if no song or cover art or artists?
+  if (!song || !song.item.album.images || !song.item.artists) return <>404</>;
+
   // @ts-expect-error some undefined bs itll be fine
-  const accent = get_average_rgb(getUrl(song.item.album.images.at(-1).url))
-  console.log(accent)
+  setAccent(get_average_rgb(getUrl(song.item.album.images.at(-1).url)));
 
-  if (accent == "err") return <>404</>;
-
-  return <div id="viewer" style={{"--accent": `rgb(${accent[0]}, ${accent[1]}, ${accent[2]})`}}>
-    <img src={getUrl(song.item.album.images[0].url)} alt="" />
-  </div>;
+  return (
+    <div id="viewer">
+      <img src={getUrl(song.item.album.images[0].url)} alt="" />
+      {/* <div id="song">{song.item.name}</div>
+      <div id="artist">{song.item.artists[0].name}</div> */}
+    </div>
+  );
 }
