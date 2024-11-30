@@ -58,7 +58,6 @@ export function createLilInstance(config: Record<string, any> = {}) {
       root?.unmount();
       pipWindow?.close();
       isOpen = false;
-      alert("Lilplayer is closed");
     }
   };
 

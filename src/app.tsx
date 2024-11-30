@@ -1,15 +1,16 @@
-import { createLilInstance } from "./openLilplayer";
+import { createLilInstance } from "./createLilplayer";
 
 async function main() {
-  const lilInstance = createLilInstance();
+  const lilInstance = createLilInstance({
+    width: 0,
+    height: 0,
+  });
 
   new Spicetify.Topbar.Button(
     "Lilplayer",
     "tablet",
     lilInstance.open
   )
-
-  console.log(Spicetify)
 }
 
 export default main;
