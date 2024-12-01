@@ -16,7 +16,7 @@ jobs:
       - name: Create the build file
         run: npm run build:local
       - name: switch to build branch
-        run: git switch build
+        run: git checkout build
       - name: move file
         run: mv ./dist/lilplayer.js ./lilplayer.js && rm -rf ./dist
       - name: stage build
