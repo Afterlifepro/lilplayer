@@ -1,0 +1,9 @@
+[
+    {
+        "name": "Lilplayer",
+        "description": "A popout player for Spotify",
+        "preview": "assets/preview.png",
+        "main": "dist/lilplayer.js",
+        "readme": "README.md"
+    }
+]
