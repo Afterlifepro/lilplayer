@@ -26,5 +26,6 @@ jobs:
         run: |
           git config --global user.name "Github Actions"
           git config --global user.email "96529802+Afterlifepro@users.noreply.github.com"
-          git commit -am "New Release"
+          git add .
+          git commit -m "New Release"
           git push
