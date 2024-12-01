@@ -15,13 +15,9 @@ jobs:
         run: npm install
       - name: Create the build file
         run: npm run build:local
-      - name: switch to build branch
-        run: git checkout build
-      - name: move file
-        run: mv ./dist/lilplayer.js ./lilplayer.js && rm -rf ./dist
       - name: stage build
         run: git add .
       - name: commit build
-        run: git commit -m "${{ github.event.head_commit.message }}"
+        run: git commit -m "Create build: ${{ github.event.head_commit.message }}"
       - name: push to repo
         run: git push
