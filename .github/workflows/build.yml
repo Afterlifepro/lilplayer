@@ -22,3 +22,9 @@ jobs:
           body: ${{ github.event.head_commit.message }}
           tag_name: ${{ github.ref_name }}
           files: dist/lilplayer.js
+      - name: Commit build
+        run: |
+          git config --global user.name "Github Actions"
+          git config --global user.email "96529802+Afterlifepro@users.noreply.github.com"
+          git commit -am "Release: ${{ github.event.head_commit.message }}"
+          git push
