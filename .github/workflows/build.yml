@@ -21,4 +21,4 @@ jobs:
         with:
           body: ${{ github.event.head_commit.message }}
           tag_name: ${{ github.ref_name }}
-          files: lilplayer.js
+          files: dist/lilplayer.js
