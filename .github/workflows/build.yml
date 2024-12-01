@@ -26,5 +26,5 @@ jobs:
         run: |
           git config --global user.name "Github Actions"
           git config --global user.email "96529802+Afterlifepro@users.noreply.github.com"
-          git commit -am "Release: ${{ github.event.head_commit.message }}"
+          git commit -am "New Release"
           git push
