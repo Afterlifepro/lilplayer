@@ -1,0 +1,27 @@
+name: Build spicetify extension
+on: [push]
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+      - name: Install packages
+        run: npm ci
+      - name: Create the build file
+        run: npm run build:local
+      - name: switch to build branch
+        run: git switch build
+      - name: move file
+        run: mv ./dist/lilplayer.js ./lilplayer.js && rm -rf ./dist
+      - name: stage build
+        run: git add .
+      - name: commit build
+        run: git commit -m "${{ github.event.head_commit.message }}"
+      - name: push to repo
+        run: git push
