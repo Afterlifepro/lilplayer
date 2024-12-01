@@ -2,9 +2,9 @@ name: Build spicetify extension
 on: [push]
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
